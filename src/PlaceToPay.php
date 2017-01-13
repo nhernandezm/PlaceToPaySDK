@@ -3,7 +3,11 @@
 namespace PlaceToPay;
 
 /**
- * This class is the base class for the PlaceToPay SDK.
+ * Controller is a simple implementation of a Controller.
+ *
+ * It provides methods to common features needed in controllers.
+ *
+ * @author Fabien Potencier <naferh@hotmail.com>
  */
 class PlaceToPay
 {
