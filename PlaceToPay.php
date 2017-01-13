@@ -47,7 +47,8 @@ class PlaceToPay
     }
 
     /**
-     * @return Array
+     * Octner los datos para poder autenticarce al llamar una funciòn del servicio.
+     * @return Array con los datos de configuraciòn
      */
     public function getAuth()
     {

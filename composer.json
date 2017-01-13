@@ -10,7 +10,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.6",
-        "nhernandezm/placetopaysdk": "dev-master"
+        "placetopay/placetopaysdk": "dev-master"
     },
     "autoload": {
         "psr-0": {
