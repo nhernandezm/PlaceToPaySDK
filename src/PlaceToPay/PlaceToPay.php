@@ -2,6 +2,7 @@
 
 namespace PlaceToPay;
 use SoapClient;
+use PlaceToPay\Bank;
 
 /**
  * Controller is a simple implementation of a Controller.
@@ -21,23 +22,28 @@ class PlaceToPay
     /**
      * @var string
      */
-    private $tranKey;  
+    protected $tranKey;  
 
     /**
      * @var SoapClient
      */
-    private $seed;
+    protected $seed;
 
     /**
      * @var SoapClient
      */
-    private $soapClient;
+    protected $soapClient;
+
+    /**
+     * @var Bank
+     */
+    protected $bank;
 
 
     /**
-     * @param string                 $apiKey
-     * @param string                 $tranKey
-     * @param string                 $urlService
+     * @param string $apiKey
+     * @param string $tranKey
+     * @param string $urlService
      */
     public function __construct(
         $apiKey,
@@ -46,9 +52,12 @@ class PlaceToPay
     ) {
         $this->apiKey = $apiKey;
         $this->seed =  date('c');  
-        $this->tranKey = sha1($this->seed. $tranKey );
+        $this->tranKey = sha1($this->seed. $tranKey);
+        $auth = $this->getAuth();
 
-        $this->soapClient = new SoapClient($urlService, $this->getAuth());
+        $this->soapClient = new SoapClient($urlService, $auth);
+        $this->bank = new Bank($this->soapClient,$auth);
+
     }
 
     /**
@@ -63,20 +72,8 @@ class PlaceToPay
 			"tranKey"=>$this->tranKey,
 			"seed"=>$this->seed
 		);
-
 		return $auth;
     }
-
-
-    /**
-     * @return Array
-     */
-    public function getBankList()
-    {
-      return $this->soapClient->getBankList($this->getAuth());
-    }
-
-
 }
 
 
