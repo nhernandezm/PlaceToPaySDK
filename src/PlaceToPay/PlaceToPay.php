@@ -41,7 +41,7 @@ class PlaceToPay
     public function __construct(
         $apiKey,
         $tranKey,
-        $urlService = 'https://test.placetopay.com/soap/pse/?wsdl',
+        $urlService = 'https://test.placetopay.com/soap/pse/?wsdl'
     ) {
         $this->apiKey = $apiKey;
         $this->seed =  date('c');  
