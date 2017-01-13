@@ -2,6 +2,8 @@
 
 namespace PlaceToPay\Bank;
 
+use SoapClient;
+
 class Bank
 {
 	/**
@@ -23,10 +25,36 @@ class Bank
     }
 
    	/**
+     * Obtener la lista de bancos
      * @return Array
      */
     public function getBankList()
     {
-      return $this->soapClient->getBankList($this->auth);
+        $bankList = $this->soapClient->getBankList($this->auth);
+        if($bankList){
+            $this->setBankListCache($bankList);
+        }else{
+            $bankList = $this->getBankListCache();
+        }
+        return  $bankList;         
+    }
+
+    /**
+     * @param Array
+     */
+    public function setBankListCache($bankList)
+    {
+        $jsonBankString = json_encode($bankList);
+        file_put_contents('bankListCache.json', $jsonBankString);
+    }
+
+    /**
+     * @return Array
+     */
+    public function getBankListCache()
+    {
+        $jsonBankString = file_get_contents('bankListCache.json');
+        $listBankCache = json_decode($jsonBankString, true); 
+        return $listBankCache;
     }
 }

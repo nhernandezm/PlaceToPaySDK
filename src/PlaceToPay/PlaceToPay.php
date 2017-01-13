@@ -2,7 +2,7 @@
 
 namespace PlaceToPay;
 use SoapClient;
-use PlaceToPay\Bank;
+use PlaceToPay\Bank\Bank;
 
 /**
  * Controller is a simple implementation of a Controller.
@@ -37,7 +37,7 @@ class PlaceToPay
     /**
      * @var Bank
      */
-    protected $bank;
+    private $bank;
 
 
     /**
@@ -66,13 +66,17 @@ class PlaceToPay
      */
     public function getAuth()
     {
-    	$auth = array();
+        $auth = array();
         $auth['auth']= array(
-			"login"=>$this->apiKey,
-			"tranKey"=>$this->tranKey,
-			"seed"=>$this->seed
-		);
-		return $auth;
+            "login"=>$this->apiKey,
+            "tranKey"=>$this->tranKey,
+            "seed"=>$this->seed
+        );
+        return $auth;
+    }
+
+    public function getBank(){
+        return $this->bank;
     }
 }
 
@@ -92,9 +96,9 @@ $servicio = "https://test.placetopay.com/soap/pse/?wsdl"; //url del servicio
 $parametros=array(); //parametros de la llamada
 
 $parametros['auth']= array(
-	"login"=>$login,
-	"tranKey"=>$tranKey,
-	"seed"=>$seed
+    "login"=>$login,
+    "tranKey"=>$tranKey,
+    "seed"=>$seed
 );
 
 
