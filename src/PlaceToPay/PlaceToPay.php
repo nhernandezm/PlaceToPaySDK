@@ -1,6 +1,7 @@
 <?PHP
 
 namespace PlaceToPay;
+use SoapClient;
 
 /**
  * Controller is a simple implementation of a Controller.
