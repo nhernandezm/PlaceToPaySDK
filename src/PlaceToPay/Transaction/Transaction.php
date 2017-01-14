@@ -6,7 +6,7 @@ use SoapClient;
 
 class Transaction
 {
-	/**
+    /**
      * @var SoapClient
      */
     protected $soapClient;
@@ -22,7 +22,7 @@ class Transaction
     private $transactionID;
 
 
-	/**
+    /**
      * @param Array $auth
      */
     public function __construct(SoapClient $soapClient,Array $auth ) {
@@ -30,7 +30,7 @@ class Transaction
         $this->auth = $auth;
     }
 
-   	/**
+    /**
      * crear una tra
      * @return Array
      */
@@ -68,9 +68,10 @@ class Transaction
         $PSET["ipAddress"] = "186.116.70.45";
         $PSET["userAgent"] = "";
 
-        $$this->auth["transaction"] = $PSET;
-        $transaction = $this->soapClient->createTransaction($parametros);   
+        $this->auth["transaction"] = $PSET;
+        $transaction = $this->soapClient->createTransaction($this->auth);   
 
+        $transaction = json_decode(json_encode($transaction), True);
         return  $transaction;  
 
     }

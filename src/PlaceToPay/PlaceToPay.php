@@ -3,6 +3,7 @@
 namespace PlaceToPay;
 use SoapClient;
 use PlaceToPay\Bank\Bank;
+use PlaceToPay\Transaction\Transaction;
 
 /**
  * Controller is a simple implementation of a Controller.
@@ -39,6 +40,11 @@ class PlaceToPay
      */
     private $bank;
 
+    /**
+     * @var Transaction
+     */
+    private $transaction;
+
 
     /**
      * @param string $apiKey
@@ -57,6 +63,7 @@ class PlaceToPay
 
         $this->soapClient = new SoapClient($urlService, $auth);
         $this->bank = new Bank($this->soapClient,$auth);
+        $this->transaction = new Transaction($this->soapClient,$auth);
 
     }
 
@@ -78,34 +85,8 @@ class PlaceToPay
     public function getBank(){
         return $this->bank;
     }
+
+    public function getTransaction(){
+        return $this->transaction;
+    }
 }
-
-
-
-
-
-
-/*
-
-$login = "6dd490faf9cb87a9862245da41170ff2";
-$tranKey = "024h1IlD";
-$seed = date('c');
-$tranKey = sha1( $seed. $tranKey );
-
-$servicio = "https://test.placetopay.com/soap/pse/?wsdl"; //url del servicio
-$parametros=array(); //parametros de la llamada
-
-$parametros['auth']= array(
-    "login"=>$login,
-    "tranKey"=>$tranKey,
-    "seed"=>$seed
-);
-
-
-$client = new SoapClient($servicio, $parametros);
-//var_dump($client);
-
-$result = $client->getBankList($parametros);//llamamos al métdo que nos interesa con los parámetros
-var_dump($result);
-print_r($result);
-*/
