@@ -2,7 +2,7 @@
 
 namespace PlaceToPay\Entity;
 
-use PlaceToPay\Entity\Person
+use PlaceToPay\Entity\Person;
 
 
 class PSETransactionRequest
@@ -344,7 +344,7 @@ class PSETransactionRequest
      * Retorna direcciòn Ip
      * @return string
      */
-    public function getIpAddress($ipAddress){
+    public function getIpAddress(){
         return $this->ipAddress;
     }
 

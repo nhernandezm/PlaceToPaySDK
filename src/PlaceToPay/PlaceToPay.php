@@ -4,13 +4,15 @@ namespace PlaceToPay;
 use SoapClient;
 use PlaceToPay\Bank\Bank;
 use PlaceToPay\Transaction\Transaction;
+use PlaceToPay\Entity\PSETransactionRequest;
+use PlaceToPay\Entity\Person;
 
 /**
  * Controller is a simple implementation of a Controller.
  *
  * It provides methods to common features needed in controllers.
  *
- * @author Fabien Potencier <naferh@hotmail.com>
+ * @author Nafer H. <naferh@hotmail.com>
  */
 class PlaceToPay
 {
@@ -64,7 +66,6 @@ class PlaceToPay
         $this->soapClient = new SoapClient($urlService, $auth);
         $this->bank = new Bank($this->soapClient,$auth);
         $this->transaction = new Transaction($this->soapClient,$auth);
-
     }
 
     /**
@@ -88,5 +89,15 @@ class PlaceToPay
 
     public function getTransaction(){
         return $this->transaction;
+    }
+
+    public function newPerson(){
+        $person = new Person();
+        return $person;
+    }
+
+    public function newPSETR(){
+        $PSETR = new PSETransactionRequest();
+        return $PSETR;
     }
 }
