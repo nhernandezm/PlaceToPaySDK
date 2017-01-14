@@ -3,6 +3,8 @@
 namespace PlaceToPay\Transaction;
 
 use SoapClient;
+use PlaceToPay\Entity\Person;
+use PlaceToPay\Entity\PSETransactionRequest;
 
 class Transaction
 {
@@ -34,8 +36,10 @@ class Transaction
      * crear una tra
      * @return Array
      */
-    public function createTransaction()
+    public function createTransaction(PSETransactionRequest $PSET)
     {
+
+    /*
         $PSET = array();
         $payer = array();
 
@@ -67,12 +71,12 @@ class Transaction
         $PSET["payer"] = $payer;
         $PSET["ipAddress"] = "186.116.70.45";
         $PSET["userAgent"] = "";
-
-        $this->auth["transaction"] = $PSET;
+    */
+        $this->auth["transaction"] = $PSET->toArray();
         $transaction = $this->soapClient->createTransaction($this->auth);   
 
         $transaction = json_decode(json_encode($transaction), True);
-        return  $transaction;  
+        return  $transaction;
 
     }
 
