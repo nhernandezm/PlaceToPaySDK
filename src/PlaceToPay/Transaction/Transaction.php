@@ -39,39 +39,6 @@ class Transaction
     public function createTransaction(PSETransactionRequest $PSET)
     {
 
-    /*
-        $PSET = array();
-        $payer = array();
-
-        $PSET["bankCode"] = "1040";
-        $PSET["bankInterface"] = 0; 
-        $PSET["returnURL"] = "http://186.116.70.45:8080/PlaceToPayApp/web/";
-        $PSET["reference"] = "1104010448";
-        $PSET["description"] = "Pago 01";
-        $PSET["language"] = "es";
-        $PSET["currency"] = "COP";
-        $PSET["totalAmount"] = 3000;
-        $PSET["taxAmount"] = 100;
-        $PSET["devolutionBase"] = 16;
-        $PSET["tipAmount"] = 30;
-
-        $payer["document"] = "1104010447";
-        $payer["documentType"] = "CC";
-        $payer["firstName"] = "Nafer";
-        $payer["lastName"] = "Hernandez";
-        $payer["company"] = "PlaceToPay";
-        $payer["emailAddress"] = "naferh@hotmail.com";
-        $payer["address"] = "Barrio 13 de junio UR India MG L4";
-        $payer["city"] = "Cartagena";
-        $payer["province"] = "Bolovar";
-        $payer["country"] = "Colombia";
-        $payer["phone"] = "6904657";
-        $payer["mobile"] = "3215678099";
-
-        $PSET["payer"] = $payer;
-        $PSET["ipAddress"] = "186.116.70.45";
-        $PSET["userAgent"] = "";
-    */
         $this->auth["transaction"] = $PSET->toArray();
         $transaction = $this->soapClient->createTransaction($this->auth);   
 
