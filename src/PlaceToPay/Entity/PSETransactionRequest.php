@@ -45,13 +45,13 @@ class PSETransactionRequest
     * acorde a ISO 631-1, mayúscula sostenida
     * @var string
     */
-    private $language;
+    private $language = "ES";
 
     /**
     * Moneda a usar para el recaudo acorde a ISO 4217
     * @var string
     */
-    private $currency;
+    private $currency = "COP";
 
     /**
     * Valor total a recaudar

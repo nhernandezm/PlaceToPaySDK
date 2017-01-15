@@ -6,7 +6,7 @@ use SoapClient;
 
 class Bank
 {
-	/**
+    /**
      * @var SoapClient
      */
     protected $soapClient;
@@ -16,7 +16,7 @@ class Bank
      */
     protected $auth;
 
-	/**
+    /**
      * @param Array $auth
      */
     public function __construct(SoapClient $soapClient,Array $auth ) {
@@ -24,7 +24,7 @@ class Bank
         $this->auth = $auth;
     }
 
-   	/**
+    /**
      * Obtener la lista de bancos
      * @return Array
      */
