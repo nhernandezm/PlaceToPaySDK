@@ -12,6 +12,9 @@
         "php":">=5.6",
         "placetopay/placetopaysdk": "dev-master"
     },
+    "require-dev": {
+        "placetopay/placetopaysdk": "dev-master"
+    },
     "autoload": {
         "psr-0": {
             "PlaceToPay": "src/"
