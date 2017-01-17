@@ -70,7 +70,7 @@ class Transaction
         if($transactionIDaux){
             $para = array();
             $para["auth"] = $this->auth;
-            $para["transactionIDaux"] = $transactionID;
+            $para["transactionID"] = $transactionID;
             $transactionInfo = $this->soapClient->getTransactionInformation($para);
             $transactionInfo = json_decode(json_encode($transactionInfo), True);
         }else{
