@@ -30,9 +30,25 @@ class Bank
      */
     public function getBankList()
     {
-        $bankList = $this->soapClient->getBankList($this->auth);
-        if($bankList){
-            $this->setBankListCache($bankList);
+        $bankListCache = $this->getBankListCache();
+        $updateListBank = true;
+        if(is_array($bankListCache)){
+            if(array_key_exists("day", $bankListCache)){
+                $day = $bankListCache["day"];
+                $toDay = date("j");
+                if($day == $toDay){
+                    $updateListBank = false;
+                }
+            }
+        }
+
+        if($updateListBank){
+            $bankList = $this->soapClient->getBankList($this->auth);
+            if($bankList){
+                $this->setBankListCache($bankList);
+            }else{
+                $bankList = $this->getBankListCache();
+            }
         }else{
             $bankList = $this->getBankListCache();
         }
@@ -40,15 +56,21 @@ class Bank
     }
 
     /**
+     * Almacenar la lista de bancos en un archivo json
      * @param Array
      */
     public function setBankListCache($bankList)
     {
         $jsonBankString = json_encode($bankList);
+        $jsonBankArray = json_decode($jsonBankString,true);
+        $toDay = date("j");
+        $jsonBankArray["day"] = $toDay; 
+        $jsonBankString = json_encode($jsonBankArray);
         file_put_contents('bankListCache.json', $jsonBankString);
     }
 
     /**
+     * Obtner los bancos que se esten en el json 
      * @return Array
      */
     public function getBankListCache()
