@@ -68,7 +68,10 @@ class Transaction
             $transactionIDaux = $getTransactionID();
         }
         if($transactionIDaux){
-            $transactionInfo = $this->soapClient->getTransactionInformation($this->auth,$transactionIDaux);   
+            $para = array();
+            $para["auth"] = $this->auth;
+            $para["transactionIDaux"] = $transactionID;
+            $transactionInfo = $this->soapClient->getTransactionInformation($para);
             $transactionInfo = json_decode(json_encode($transactionInfo), True);
         }else{
             $transactionInfo = array("message"=>"No se encontro el id de la transacciòn");
