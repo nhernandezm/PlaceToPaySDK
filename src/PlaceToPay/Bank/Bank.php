@@ -56,7 +56,6 @@ class Bank
     }
 
     /**
-     * Almacenar la lista de bancos en un archivo json
      * @param Array
      */
     public function setBankListCache($bankList)
@@ -70,7 +69,6 @@ class Bank
     }
 
     /**
-     * Obtner los bancos que se esten en el json 
      * @return Array
      */
     public function getBankListCache()
