@@ -46,7 +46,7 @@ class Transaction
 
         if(array_key_exists("createTransactionResult", $transaction)){
             if(array_key_exists("transactionID", $transaction["createTransactionResult"])){
-                $this->setTransactionID($transaction["transactionID"]);
+                $this->setTransactionID($transaction["createTransactionResult"]["transactionID"]);
             }
         }
 
