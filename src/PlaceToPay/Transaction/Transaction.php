@@ -33,7 +33,7 @@ class Transaction
     }
 
     /**
-     * crear una tra
+     * crear una tracsacciòn y retornar los datos de la transacciòn creada
      * @return Array
      */
     public function createTransaction(PSETransactionRequest $PSET)
@@ -43,8 +43,37 @@ class Transaction
         $transaction = $this->soapClient->createTransaction($this->auth);   
 
         $transaction = json_decode(json_encode($transaction), True);
-        return  $transaction;
 
+        if(array_key_exists("createTransactionResult", $transaction)){
+            if(array_key_exists("transactionID", $transaction["createTransactionResult"])){
+                $this->setTransactionID($transaction["transactionID"]);
+            }
+        }
+
+        return  $transaction;
+    }
+
+
+    /**
+     * Retorna la información del estado de la transacción.
+     * @param transactionID string
+     * @return Array
+     */
+    public function getTransactionInformation($transactionID)
+    {
+        $transactionIDaux = null;
+        if($transactionID){
+            $transactionIDaux = $transactionID;
+        }else{
+            $transactionIDaux = $getTransactionID();
+        }
+        if($transactionIDaux){
+            $transactionInfo = $this->soapClient->getTransactionInformation($this->auth,$transactionIDaux);   
+            $transactionInfo = json_decode(json_encode($transactionInfo), True);
+        }else{
+            $transactionInfo = array("message"=>"No se encontro el id de la transacciòn");
+        }
+        return  $transactionInfo;
     }
 
     /**
