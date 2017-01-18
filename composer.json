@@ -3,16 +3,13 @@
     "type": "library",
     "authors": [
         {
-            "name": "nafer",
+            "name": "nafer Hernandez",
             "email": "naferh@hotmail.com"
         }
     ],
     "minimum-stability": "dev",
     "require": {
         "php":">=5.6",
-        "placetopay/placetopaysdk": "dev-master"
-    },
-    "require-dev": {
         "placetopay/placetopaysdk": "dev-master"
     },
     "autoload": {
