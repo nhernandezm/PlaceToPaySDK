@@ -12,7 +12,7 @@ Agrega "placetopay/placetopaysdk": "dev-master" a tu archivo composer.json.
         }
     }
     
-    O ejecutar en consola
+O ejecutar en consola
     
     composer require placetopay/placetopaysdk=dev-master
     
