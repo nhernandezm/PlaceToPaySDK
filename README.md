@@ -82,3 +82,9 @@ Crear una instancia
 	$PSETR->setUserAgent($userAgent);
 	
 	$transaction  = $placetopay->getTransaction()->createTransaction($PSETR);
+ 
+ Ver el estado de una transacciòn
+  
+     $placetopay = new PlaceToPay("35345435636634634634","657657567");
+     $transaction  = $placetopay->getTransaction();	
+     $transactionInfo  = $transaction->getTransactionInformation($transactionID);
