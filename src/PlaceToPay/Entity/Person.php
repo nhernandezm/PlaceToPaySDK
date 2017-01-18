@@ -7,61 +7,80 @@ class Person
 {
 
     /**
+     * Número de identificación de la persona
      * @var string
      */
     private $document;
 
     /**
+     *  Tipo de documento de identificación de la persona [CC, CE, TI, PPN].
+     *  CC = Cédula de ciudanía colombiana
+     *  CE = Cédula de extranjería
+     *  TI = Tarjeta de identidad
+     *  PPN = Pasaporte
+     *  NIT = Número de identificación tributaria
+     *  SSN = Social Security Number
      * @var string
      */
     private $documentType;
 
     /**
+     * Nombres
      * @var string
      */
     private $firstName;
 
     /**
+     * Apellidos
      * @var string
      */
     private $lastName;
 
     /**
+     * Nombre de la compañía en la cual labora o representa
      * @var string
      */
     private $company;
 
     /**
+     * Correo electrónico
      * @var string
      */
     private $emailAddress;
 
     /**
+     * Dirección postal completa
      * @var string
      */
     private $address;
 
     /**
+     * Nombre de la ciudad coincidente con la dirección
      * @var string
      */
     private $city;
 
     /**
+     * Nombre de la provincia o departamento coincidente con la dirección
      * @var string
      */
     private $province;
 
     /**
+     * Código internacional del país que aplica a la
+     * dirección física acorde a ISO 3166-1,mayúscula sostenida.
      * @var string
      */
     private $country;
 
     /**
+     * Número de telefonía fija
      * @var string
      */
     private $phone;
 
     /**
+     * Número de telefonía móvil o celular
      * @var string
      */
     private $mobile;
