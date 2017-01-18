@@ -16,7 +16,7 @@ Agrega "placetopay/placetopaysdk": "dev-master" a tu archivo composer.json.
     
     composer require placetopay/placetopaysdk=dev-master
     
-  ## Uso
+## Uso
   
  Para obtener una lista de bancos:
     
