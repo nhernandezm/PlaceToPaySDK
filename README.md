@@ -22,7 +22,7 @@ Crear una instancia
  
     $placetopay = new PlaceToPay(Login,Transactional Key);
  
- Otener una lista de bancos
+ Obtener una lista de bancos
     
      $listBanks = array();
      $placetopay = new PlaceToPay("35345435636634634634","657657567");
